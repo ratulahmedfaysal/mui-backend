@@ -22,7 +22,7 @@ async function checkDeposits() {
             console.log(`    User ID: ${d.user_id}`);
             console.log(`    PaymentMethod ID (Ref): ${d.payment_method_id?._id || 'NULL'}`);
             console.log(`    PaymentMethod Name: ${d.payment_method_id?.method_name || 'UNDEFINED'}`);
-            console.log(`    Raw PaymentMethod ID stored:`, d.toObject().payment_method_id);
+            console.log(`    Raw PaymentMethod Field:`, d.payment_method_id);
         });
 
         const methods = await PaymentMethod.find();
