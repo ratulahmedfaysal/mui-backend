@@ -210,9 +210,14 @@ async function distributeCommissions(sourceUserId, amount, type) {
                         status: 'approved'
                     }).save();
 
-                    // Update UserReferral record if exists?
-                    // Usually we might want to track 'commission_earned' in UserReferral table for that specific link.
-                    // But simpler is just to trust Transaction logs.
+                    // Update UserReferral record if exists (for statistics)
+                    if (level === 1) {
+                        const UserReferral = require('../models/UserReferral');
+                        await UserReferral.findOneAndUpdate(
+                            { referrer_id: uplineUser._id, referred_user_id: sourceUserId },
+                            { $inc: { commission_earned: commission } }
+                        );
+                    }
                 }
             }
 
