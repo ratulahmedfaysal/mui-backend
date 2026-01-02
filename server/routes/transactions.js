@@ -77,51 +77,62 @@ router.put('/deposits/:id', auth, async (req, res) => {
             // 3. Distribute Commissions
             const settings = await ReferralSettings.find({ system_type: 'deposit', is_active: true }).sort({ level_number: 1 });
 
-            // Find uplines
-            // recursive or iterative? simplified iterative for 3 levels
-            let currentUserId = deposit.user_id;
+            if (settings.length > 0) {
+                let walkerUser = await User.findById(deposit.user_id);
+                const maxLevel = settings[settings.length - 1].level_number;
+                const settingsMap = new Map(settings.map(s => [s.level_number, s]));
+                const sourceUser = await User.findById(deposit.user_id);
 
-            for (const setting of settings) {
-                // Find referrer of currentUserId
-                // UserReferral model: referrer_id, referred_user_id.
-                // Find where referred_user_id == currentUserId (direct upline)
-                // Wait, UserReferral usually stores direct relationship? 
-                // My model: referrer_id, referred_user_id, level. 
-                // Actually "level" might be relative to root? or relative to referrer?
-                // Usually UserReferral is just (referrer, referred).
-                // My `UserReferral` model had `level`. If `level` is always 1 (direct), then I need to walk up chain.
+                for (let level = 1; level <= maxLevel; level++) {
+                    if (!walkerUser || !walkerUser.referred_by) break;
 
-                const referral = await UserReferral.findOne({ referred_user_id: currentUserId, level: 1 });
-                if (!referral) break; // No upline
+                    const uplineUser = await User.findOne({ referral_code: walkerUser.referred_by });
+                    if (!uplineUser) break;
 
-                const referrerId = referral.referrer_id;
-                const commissionAmount = (deposit.final_amount * setting.commission_percentage) / 100;
+                    const setting = settingsMap.get(level);
+                    if (setting) {
+                        const commissionAmount = (deposit.final_amount * setting.commission_percentage) / 100;
 
-                if (commissionAmount > 0) {
-                    // Add balance toreferrer
-                    await User.findByIdAndUpdate(referrerId, { $inc: { balance: commissionAmount } });
+                        if (commissionAmount > 0) {
+                            // Credit Upline
+                            await User.findByIdAndUpdate(uplineUser._id, { $inc: { balance: commissionAmount } });
 
-                    // Log Commission Transaction
-                    await new Transaction({
-                        user_id: referrerId,
-                        type: 'referral_bonus',
-                        amount: commissionAmount,
-                        description: `Deposit bonus from level ${setting.level_number} referral`,
-                        status: 'approved',
-                        // balance_after... skip for speed
-                    }).save();
+                            // Log Transaction (Fix: type: 'referral_commission' matches frontend)
+                            await new Transaction({
+                                user_id: uplineUser._id,
+                                type: 'referral_commission',
+                                amount: commissionAmount,
+                                description: `Deposit bonus (Level ${level}) from ${sourceUser ? sourceUser.username : 'downline'}`,
+                                status: 'approved'
+                            }).save();
 
-                    // Update UserReferral stats? commission_earned?
-                    await UserReferral.findOneAndUpdate(
-                        { referrer_id: referrerId, referred_user_id: currentUserId }, // This is specifically for this pair
-                        // actually we want to update the referrer's total earnings potentially?
-                        // My model has `commission_earned` on UserReferral. Maybe correct.
-                        { $inc: { commission_earned: commissionAmount } }
-                    );
+                            // Update UserReferral Stats
+                            // Try to find existing record, or create if missing (self-healing for old users)
+                            let userReferral = await UserReferral.findOne({ referrer_id: uplineUser._id, referred_user_id: deposit.user_id });
+
+                            if (userReferral) {
+                                await UserReferral.findByIdAndUpdate(userReferral._id, { $inc: { commission_earned: commissionAmount } });
+                            } else if (level === 1) {
+                                // Only create a direct link record if level 1 and missing
+                                await new UserReferral({
+                                    referrer_id: uplineUser._id,
+                                    referred_user_id: deposit.user_id,
+                                    level: 1,
+                                    commission_earned: commissionAmount,
+                                    status: 'active'
+                                }).save();
+                            } else {
+                                // For indirect levels (2, 3), we don't strictly keep a UserReferral record usually, 
+                                // but if the requirement is to show "Commission Earned" in the list, 
+                                // that list usually shows DIRECT referrals.
+                                // If the list shows indirect, we would need records for them.
+                                // Assuming "Referred Users" list is direct referrals only. 
+                                // So we only care about updating the record if it exists (which matches level 1).
+                            }
+                        }
+                    }
+                    walkerUser = uplineUser;
                 }
-
-                // Move up
-                currentUserId = referrerId;
             }
         }
 

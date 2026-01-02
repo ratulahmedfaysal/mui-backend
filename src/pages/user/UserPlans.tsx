@@ -16,6 +16,7 @@ const UserPlans: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<InvestmentPlan | null>(null);
   const [investmentAmount, setInvestmentAmount] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [investing, setInvesting] = useState(false);
   const { user, refreshUser } = useAuth();
 
@@ -75,7 +76,7 @@ const UserPlans: React.FC = () => {
       await refreshUser();
       setIsModalOpen(false);
       setInvestmentAmount('');
-      alert('Investment successful!\n\nImportant Note:  You need to claim your ROI daily. If you miss any day, you will lose your ROI for that day.\n\nMake sure to check your dashboard regularly and claim your daily returns to maximize your investment benefits.');
+      setShowSuccessModal(true); // Show success modal instead of alert
     } catch (error: any) {
       console.error('Error creating investment:', error);
       alert(error.response?.data?.error || 'Failed to create investment. Please try again.');
@@ -275,6 +276,44 @@ const UserPlans: React.FC = () => {
             </div>
           </div>
         )}
+      </Modal>
+
+      {/* Success Modal */}
+      <Modal
+        isOpen={showSuccessModal}
+        onClose={() => setShowSuccessModal(false)}
+        title="Investment Successful"
+      >
+        <div className="space-y-4">
+          <div className="text-center">
+            <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100 dark:bg-green-900/20 mb-4">
+              <CheckCircle className="h-6 w-6 text-green-600 dark:text-green-400" />
+            </div>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              Your investment has been created successfully.
+            </p>
+          </div>
+          <div className="bg-orange-50 dark:bg-orange-900/20 border-l-4 border-orange-500 p-4">
+            <div className="flex">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-orange-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div className="ml-3">
+                <p className="text-sm text-orange-700 dark:text-orange-300">
+                  Important: You need to claim your ROI daily. If you miss any day, you will lose your ROI for that day. Check your dashboard regularly!
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            onClick={() => setShowSuccessModal(false)}
+            className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gradient-to-r from-orange-500 to-yellow-500 text-base font-medium text-white hover:from-orange-600 hover:to-yellow-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 sm:text-sm"
+          >
+            Got it
+          </button>
+        </div>
       </Modal>
     </div>
   );

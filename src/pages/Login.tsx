@@ -11,7 +11,7 @@ const Login: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
@@ -25,8 +25,8 @@ const Login: React.FC = () => {
       // Navigation will be handled by the auth state change in App.tsx
     } catch (error: any) {
       console.error('Login error:', error);
-   //   setError(error.message || 'Failed to login');
-      alert(error.message);
+      //   setError(error.message || 'Failed to login');
+      alert(error.message || error);
     } finally {
       setLoading(false);
     }
@@ -116,8 +116,8 @@ const Login: React.FC = () => {
                   <label htmlFor="remember" className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
                     Remember me
                   </label>
-                </div> 
-{/*
+                </div>
+                {/*
                 <Link
                   to="/forgot-password"
                   className="text-sm text-orange-600 hover:text-orange-500 dark:text-orange-400"

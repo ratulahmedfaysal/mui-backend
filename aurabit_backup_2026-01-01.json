@@ -1,0 +1,838 @@
+{
+  "users": [
+    {
+      "_id": "69561db5e976b35babdd2b3a",
+      "email": "demouser@gmail.com",
+      "password": "$2a$10$JTUTQT1fE/.NXOeUhTkkZuDQAIcgfSWn/rNLeQz/I23uiXeRuXzQ6",
+      "username": "demouser",
+      "role": "user",
+      "full_name": "Demo User",
+      "balance": 390,
+      "is_active": true,
+      "is_banned": false,
+      "referral_code": "IjKR4TkE",
+      "referred_by": null,
+      "created_at": "2026-01-01T07:09:41.939Z",
+      "__v": 1,
+      "two_factor_backup_codes": [],
+      "two_factor_enabled": false
+    },
+    {
+      "_id": "69562742f456fdde5a25010c",
+      "email": "admin@gmail.com",
+      "password": "$2a$10$h1cRwf7/BC6oqs0fTT9TqemhRY8O1xZr9jBer7Q1O.0JhYJ//Xv3q",
+      "username": "admin",
+      "role": "admin",
+      "full_name": "ADMIN",
+      "balance": 0,
+      "is_active": true,
+      "is_banned": false,
+      "referral_code": "QO9R8tdP",
+      "referred_by": null,
+      "two_factor_enabled": false,
+      "two_factor_backup_codes": [],
+      "created_at": "2026-01-01T07:50:26.721Z",
+      "__v": 0
+    }
+  ],
+  "site_settings": [
+    {
+      "general": {
+        "siteName": "AuraBit",
+        "metaTitle": "AuraBit | Automated Crypto & Forex Passive Income Platform",
+        "metaDescription": "Secure and profitable Crypto & Forex Passive Income Platform"
+      },
+      "contact": {
+        "email": "support@aurabit.com",
+        "phone": "+1 (555) 123-4567",
+        "address": "123 Crypto Street, Blockchain City, BC 10101"
+      },
+      "livePerformance": {
+        "totalProfitPaid": "$1,245,795.00"
+      },
+      "_id": "69561af71840a33f3d42ad8c",
+      "key": "main_settings",
+      "faqs": [
+        {
+          "id": "1767256194359",
+          "question": "What Is AuraBit?",
+          "answer": "AuraBit is a revolutionary crypto investment platform that combines ecommerce revenue with blockchain to deliver reliable returns."
+        },
+        {
+          "id": "1767256348018",
+          "question": "How Do I Get Started?",
+          "answer": "1) Create account 2) Pick a plan 3) Deposit funds 4) Earn daily ROI. Setup takes less than 10 minutes."
+        },
+        {
+          "id": "1767256348019",
+          "question": "Is My Investment Secure?",
+          "answer": "Yes. Your funds are protected by encryption, cold wallet storage and insurance-backed security."
+        },
+        {
+          "id": "1767256348020",
+          "question": "Is Customer Support Available?",
+          "answer": "Absolutely. We provide 24/7 support via email, live chat and phone. Our team is always available."
+        },
+        {
+          "id": "1767256348021",
+          "question": "Do I Need an Active Plan For Referral Earnings?",
+          "answer": "Yes. You must have one active investment plan to earn referral commissions."
+        },
+        {
+          "id": "1767256348022",
+          "question": "How Fast Can I Withdraw Earnings?",
+          "answer": "Withdrawals are processed within 24 hours."
+        }
+      ],
+      "howItWorks": [
+        {
+          "id": "1767256440015",
+          "title": "Create Account",
+          "description": "Register for free and verify your email.",
+          "icon": "UserPlus"
+        },
+        {
+          "id": "1767256461703",
+          "title": "Choose Plan",
+          "description": "Select an investment plan that suits your goals.",
+          "icon": "Zap"
+        },
+        {
+          "id": "1767256490768",
+          "title": "Get Profit",
+          "description": "Receive daily ROI and withdraw anytime.",
+          "icon": "TrendingUp"
+        }
+      ],
+      "whyChooseUs": [
+        {
+          "id": "1",
+          "title": "Institutional-Grade AI",
+          "description": "Access the same high-frequency trading algorithms used by top hedge funds, now available for personal investing.",
+          "icon": "Zap"
+        },
+        {
+          "id": "2",
+          "title": "Secure Capital Protection",
+          "description": "Advanced risk management systems and insurance protocols ensure your principal investment is always safeguarded.",
+          "icon": "Lock"
+        },
+        {
+          "id": "3",
+          "title": "Daily Automated Payouts",
+          "description": "Profits are credited to your account every 24 hours. Withdraw your earnings instantly to your crypto wallet.",
+          "icon": "DollarSign"
+        },
+        {
+          "id": "4",
+          "title": "Complete Transparency",
+          "description": "Track every trade in real-time. Detailed performance reports show you exactly how your money is working.",
+          "icon": "Activity"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "1767256532073",
+          "name": "Michael Chen",
+          "role": "Digital Entrepreneur",
+          "comment": "The referral system is amazing! I've built a network of investors and earn passive income from their success. Professional platform with excellent support.",
+          "rating": 5,
+          "image": ""
+        },
+        {
+          "id": "1767256831477",
+          "name": "Sophia Turner",
+          "role": "Crypto Investor",
+          "comment": "I started with the Starter Plan and was shocked how smooth the payouts were. Great platform for beginners.",
+          "rating": 5,
+          "image": ""
+        },
+        {
+          "id": "1767256831478",
+          "name": "Daniel Ibrahim",
+          "role": "Business Owner",
+          "comment": "Reliable daily returns and a clean dashboard. Customer support responded in minutes — impressive!",
+          "rating": 5,
+          "image": ""
+        },
+        {
+          "id": "1767256831479",
+          "name": "Aisha Malik",
+          "role": "Finance Analyst",
+          "comment": "I use it as a passive income stream. Withdrawals are fast and transparent. Highly recommended.",
+          "rating": 5,
+          "image": ""
+        },
+        {
+          "id": "1767256831480",
+          "name": "James Carter",
+          "role": "E-commerce Seller",
+          "comment": "Great investment plans and easy to scale long-term. Perfect for diversifying income.",
+          "rating": 5,
+          "image": ""
+        },
+        {
+          "id": "1767256831481",
+          "name": "Elena Rossi",
+          "role": "Long-term Investor",
+          "comment": "The platform feels secure and professional. I appreciate the realistic ROI approach—no hype, just results.",
+          "rating": 5,
+          "image": ""
+        }
+      ],
+      "diversificationItems": [
+        {
+          "id": "1767255887535",
+          "title": "Cryptocurrency",
+          "description": "High-volatility trading on Bitcoin, Ethereum, and top altcoins.",
+          "icon": "Bitcoin",
+          "features": [
+            "24/7 Market Activity",
+            "Arbitrage Opportunities"
+          ],
+          "_id": "69562ff291155403a404389b"
+        },
+        {
+          "id": "1767255918376",
+          "title": "Commodities",
+          "description": "Indices and raw materials like Gold (XAU) and Oil (WTI) to hedge against inflation.",
+          "icon": "Layers",
+          "features": [
+            "Inflation Protection",
+            "Market Neutral Strategies"
+          ],
+          "_id": "69562ff291155403a404389c"
+        },
+        {
+          "id": "1767255979418",
+          "title": "Global Forex",
+          "description": "The world's largest market. We trade major currency pairs (EUR/USD, GBP/JPY).",
+          "icon": "DollarSign",
+          "features": [
+            "$7.5 Trillion Daily Volume",
+            "Stable",
+            "Predictable Trends"
+          ],
+          "_id": "69562ff291155403a404389d"
+        }
+      ],
+      "createdAt": "2026-01-01T06:57:59.669Z",
+      "updatedAt": "2026-01-01T08:48:14.843Z",
+      "__v": 0,
+      "section_headers": {
+        "how_it_works": {
+          "title": "How It Works",
+          "subtitle": "Start earning passive income in just 3 simple steps. Our automated trading system handles the complex market analysis for you."
+        },
+        "why_choose_us": {
+          "title": "Why Choose Us?",
+          "subtitle": "We leverage institutional-grade technology to provide retail investors with superior market access and returns."
+        },
+        "investor_reviews": {
+          "title": "What Our Investors Say",
+          "subtitle": "Join thousands of satisfied investors who have achieved financial freedom with our trading platform."
+        },
+        "faq": {
+          "title": "Frequently Asked Questions",
+          "subtitle": "Get answers to common questions about our trading strategies, security, and withdrawals."
+        },
+        "about": {
+          "title": "About Us",
+          "subtitle": "We bridge the gap between complex financial markets and passive investors using cutting-edge blockchain technology and AI trading bots."
+        },
+        "cta": {
+          "title": "Ready to Grow Your Wealth?",
+          "subtitle": "Join 25,000+ investors earning daily from the global financial markets. Start with as little as $100.",
+          "buttonText": "Get Started Now"
+        }
+      },
+      "socials": {
+        "facebook": "https://facebook.com",
+        "twitter": "https://x.com",
+        "instagram": "https://instagram.com",
+        "telegram": "https://t.me",
+        "linkedin": "https://linkedin.com"
+      },
+      "footer": {
+        "bio": "AuraBit combines advanced AI trading algorithms with expert market analysis to deliver consistent passive income from Cryptocurrency and Forex markets.",
+        "copyright": "© 2020-2026 AuraBit. All rights reserved."
+      }
+    }
+  ],
+  "investment_plans": [
+    {
+      "_id": "69562ad26557a8ed2415613c",
+      "name": "Starter Plan",
+      "subtitle": "Perfect for beginners",
+      "min_amount": 100,
+      "max_amount": 999,
+      "daily_roi_percentage": 1.5,
+      "duration_days": 30,
+      "features": [
+        "24/7 Support",
+        "Daily ROI",
+        "Instant Withdrawal"
+      ],
+      "is_active": true,
+      "return_principal": false,
+      "created_at": "2026-01-01T08:05:38.554Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562ad26557a8ed2415613f",
+      "name": "Silver Plan",
+      "subtitle": "Good for intermediate investors",
+      "min_amount": 1000,
+      "max_amount": 4999,
+      "daily_roi_percentage": 2,
+      "duration_days": 45,
+      "features": [
+        "Daily ROI",
+        "Priority Support",
+        "Auto Withdrawal"
+      ],
+      "is_active": true,
+      "return_principal": true,
+      "created_at": "2026-01-01T08:05:38.755Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562ad26557a8ed24156142",
+      "name": "Gold Plan",
+      "subtitle": "For consistent investors",
+      "min_amount": 5000,
+      "max_amount": 9999,
+      "daily_roi_percentage": 2.5,
+      "duration_days": 60,
+      "features": [
+        "VIP Support",
+        "Daily ROI",
+        "Instant Payout"
+      ],
+      "is_active": true,
+      "return_principal": true,
+      "created_at": "2026-01-01T08:05:38.928Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562ad36557a8ed24156145",
+      "name": "Platinum Plan",
+      "subtitle": "Best for big ROI",
+      "min_amount": 10000,
+      "max_amount": 24999,
+      "daily_roi_percentage": 3,
+      "duration_days": 75,
+      "features": [
+        "Premium Support",
+        "Daily ROI",
+        "High Withdrawal Limit"
+      ],
+      "is_active": true,
+      "return_principal": true,
+      "created_at": "2026-01-01T08:05:39.086Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562ad36557a8ed24156148",
+      "name": "Diamond Plan",
+      "subtitle": "Designed for elite investors",
+      "min_amount": 25000,
+      "max_amount": 49999,
+      "daily_roi_percentage": 3.5,
+      "duration_days": 90,
+      "features": [
+        "Elite Support",
+        "Daily ROI",
+        "Auto Compounding"
+      ],
+      "is_active": true,
+      "return_principal": true,
+      "created_at": "2026-01-01T08:05:39.221Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562ad36557a8ed2415614b",
+      "name": "VIP Exclusive Plan",
+      "subtitle": "High profit, premium advantages",
+      "min_amount": 50000,
+      "max_amount": 100000,
+      "daily_roi_percentage": 4,
+      "duration_days": 120,
+      "features": [
+        "Dedicated Manager",
+        "Daily ROI",
+        "Highest Withdrawal Limit"
+      ],
+      "is_active": true,
+      "return_principal": true,
+      "created_at": "2026-01-01T08:05:39.355Z",
+      "__v": 0
+    }
+  ],
+  "transactions": [
+    {
+      "balance_before": 0,
+      "balance_after": 0,
+      "_id": "69563b9f89584b42be848f9d",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "type": "deposit",
+      "amount": 495,
+      "currency": "USDT",
+      "status": "approved",
+      "description": "Deposit approved",
+      "created_at": "2026-01-01T09:17:19.011Z",
+      "__v": 0
+    },
+    {
+      "_id": "69564336ad958b2eef52b8d6",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "type": "deposit",
+      "amount": 50,
+      "currency": "USDT",
+      "status": "approved",
+      "balance_before": 495,
+      "balance_after": 545,
+      "description": "Deposit approved",
+      "created_at": "2026-01-01T09:49:42.867Z",
+      "__v": 0
+    },
+    {
+      "_id": "69564430ad958b2eef52b92a",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "type": "investment",
+      "amount": 100,
+      "currency": "USDT",
+      "status": "approved",
+      "balance_before": 545,
+      "balance_after": 445,
+      "description": "Investment in Starter Plan",
+      "created_at": "2026-01-01T09:53:52.943Z",
+      "__v": 0
+    },
+    {
+      "_id": "69564b3a8f93c70b74a18ab6",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "type": "withdrawal",
+      "amount": 55,
+      "currency": "USDT",
+      "status": "approved",
+      "balance_before": 395,
+      "balance_after": 340,
+      "reference_id": "69564b3a8f93c70b74a18ab4",
+      "description": "Withdrawal request",
+      "created_at": "2026-01-01T10:23:54.253Z",
+      "__v": 0
+    },
+    {
+      "_id": "69564c398f93c70b74a18b55",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "type": "deposit",
+      "amount": 50,
+      "currency": "USDT",
+      "status": "approved",
+      "balance_before": 340,
+      "balance_after": 390,
+      "description": "Withdrawal rejected - refunded",
+      "created_at": "2026-01-01T10:28:09.412Z",
+      "__v": 0
+    }
+  ],
+  "pairs": [
+    {
+      "_id": "695634ea91155403a40439ea",
+      "symbol": "btcusdt",
+      "is_active": true,
+      "__v": 0
+    },
+    {
+      "_id": "695635b591155403a4043a37",
+      "symbol": "ethusdt",
+      "is_active": true,
+      "__v": 0
+    },
+    {
+      "_id": "695635be91155403a4043a3c",
+      "symbol": "solusdt",
+      "is_active": true,
+      "__v": 0
+    },
+    {
+      "_id": "695635c491155403a4043a3f",
+      "symbol": "taousdt",
+      "is_active": true,
+      "__v": 0
+    },
+    {
+      "_id": "695635cb91155403a4043a42",
+      "symbol": "xrpusdt",
+      "is_active": true,
+      "__v": 0
+    },
+    {
+      "_id": "695635d191155403a4043a45",
+      "symbol": "dogeusdt",
+      "is_active": true,
+      "__v": 0
+    }
+  ],
+  "payment_methods": [
+    {
+      "_id": "69562e5e91155403a4043855",
+      "method_name": "USDT (BEP20)",
+      "currency_name": "USDT",
+      "method_image_url": "",
+      "currency_rate": 1,
+      "min_amount": 50,
+      "max_amount": 1000,
+      "fee_percentage": 0,
+      "instruction": "Don't submit multiple requests at once",
+      "required_fields": [
+        "wallet_address"
+      ],
+      "method_type": "withdrawal",
+      "is_active": true,
+      "is_automatic": false,
+      "gateway_type": "manual",
+      "created_at": "2026-01-01T08:20:46.369Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562e9391155403a404385a",
+      "method_name": "USDT (TRC20)",
+      "currency_name": "USDT",
+      "method_image_url": "",
+      "currency_rate": 1,
+      "min_amount": 50,
+      "max_amount": 1000,
+      "fee_percentage": 0.1,
+      "instruction": "Don't submit multiple requests at once",
+      "required_fields": [
+        "USDT (TRC20)"
+      ],
+      "method_type": "withdrawal",
+      "is_active": true,
+      "is_automatic": false,
+      "gateway_type": "manual",
+      "created_at": "2026-01-01T08:21:39.630Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562ed791155403a404385f",
+      "method_name": "USDT (BEP20)",
+      "currency_name": "USDT",
+      "method_image_url": "",
+      "currency_rate": 1,
+      "min_amount": 10,
+      "max_amount": 1000,
+      "fee_percentage": 0,
+      "instruction": "Our Wallet Address : OX7181",
+      "required_fields": [
+        "transaction_hash",
+        "transaction_id"
+      ],
+      "method_type": "deposit",
+      "is_active": true,
+      "is_automatic": false,
+      "gateway_type": "manual",
+      "created_at": "2026-01-01T08:22:47.032Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562f1091155403a4043864",
+      "method_name": "USDT (TRC20)",
+      "currency_name": "USDT",
+      "method_image_url": "",
+      "currency_rate": 1,
+      "min_amount": 10,
+      "max_amount": 1000,
+      "fee_percentage": 1,
+      "instruction": "Our Wallet Address : ABCD",
+      "required_fields": [
+        "transaction_hash",
+        "transaction_id"
+      ],
+      "method_type": "deposit",
+      "is_active": true,
+      "is_automatic": false,
+      "gateway_type": "manual",
+      "created_at": "2026-01-01T08:23:44.946Z",
+      "__v": 0
+    }
+  ],
+  "deposits": [
+    {
+      "_id": "69563b7689584b42be848f82",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "amount": 500,
+      "fee": 5,
+      "final_amount": 495,
+      "transaction_data": {
+        "transaction_hash": "jasgfsdkhvacGHAbfvhgvca",
+        "transaction_id": "4251123"
+      },
+      "status": "approved",
+      "created_at": "2026-01-01T09:16:38.545Z",
+      "updated_at": "2026-01-01T09:16:38.545Z",
+      "__v": 0,
+      "admin_notes": "okay",
+      "payment_method_id": "69562f1091155403a4043864"
+    },
+    {
+      "_id": "69564322ad958b2eef52b8bb",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "amount": 50,
+      "fee": 0,
+      "final_amount": 50,
+      "transaction_data": {
+        "transaction_hash": "erugewrgyffhdsiagyw",
+        "transaction_id": "4204125"
+      },
+      "status": "approved",
+      "created_at": "2026-01-01T09:49:22.859Z",
+      "updated_at": "2026-01-01T09:49:22.859Z",
+      "__v": 0,
+      "admin_notes": "done",
+      "payment_method_id": "69562e5e91155403a4043855"
+    },
+    {
+      "_id": "69566105e67507ae08dd34c3",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "amount": 100,
+      "fee": 1,
+      "final_amount": 99,
+      "transaction_data": {
+        "transaction_hash": "idsuyghgsiuvbhjnbbsgh",
+        "transaction_id": "4625124564",
+        "upload_screenshot": "https://res.cloudinary.com/dykplzmud/image/upload/v1767268612/aurabit_uploads/1767268609851-112731305.png"
+      },
+      "status": "pending",
+      "created_at": "2026-01-01T11:56:53.913Z",
+      "updated_at": "2026-01-01T11:56:53.913Z",
+      "__v": 0,
+      "payment_method_id": "69562e5e91155403a4043855"
+    },
+    {
+      "_id": "69566351e25d41b363739c02",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "amount": 10,
+      "fee": 0.1,
+      "final_amount": 9.9,
+      "transaction_data": {
+        "transaction_hash": "hweruyfgqebhgcavsfdvqgv",
+        "transaction_id": "53436545"
+      },
+      "status": "rejected",
+      "created_at": "2026-01-01T12:06:41.971Z",
+      "updated_at": "2026-01-01T12:06:41.971Z",
+      "__v": 0,
+      "payment_method_id": "69562e5e91155403a4043855",
+      "admin_notes": "chk"
+    },
+    {
+      "_id": "695664c698d63d64896bd519",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "payment_method_id": "69562f1091155403a4043864",
+      "amount": 10,
+      "fee": 0.1,
+      "final_amount": 9.9,
+      "transaction_data": {
+        "transaction_hash": "iuhautnuyassjhnjsz",
+        "transaction_id": "56416515"
+      },
+      "status": "pending",
+      "created_at": "2026-01-01T12:12:54.054Z",
+      "updated_at": "2026-01-01T12:12:54.054Z",
+      "__v": 0
+    }
+  ],
+  "withdrawals": [
+    {
+      "_id": "69564590ad958b2eef52b98e",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "amount": 50,
+      "fee": 0.05,
+      "final_amount": 49.95,
+      "transaction_data": {
+        "USDT (TRC20)": "herjvbguhuizvbsdajguhgdsfgdgsh"
+      },
+      "status": "rejected",
+      "created_at": "2026-01-01T09:59:44.420Z",
+      "updated_at": "2026-01-01T09:59:44.420Z",
+      "__v": 0,
+      "payment_method_id": "69562f1091155403a4043864",
+      "admin_notes": "multiple req"
+    },
+    {
+      "_id": "69564b3a8f93c70b74a18ab4",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "amount": 55,
+      "fee": 0,
+      "final_amount": 55,
+      "transaction_data": {
+        "wallet_address": "ftaefhbgcvbhjbcvzxgydhag"
+      },
+      "status": "approved",
+      "created_at": "2026-01-01T10:23:54.055Z",
+      "updated_at": "2026-01-01T10:23:54.055Z",
+      "__v": 0,
+      "admin_notes": "done bro",
+      "payment_method_id": "69562e5e91155403a4043855"
+    }
+  ],
+  "user_investments": [
+    {
+      "_id": "69564430ad958b2eef52b928",
+      "user_id": "69561db5e976b35babdd2b3a",
+      "plan_id": "69562ad26557a8ed2415613c",
+      "amount": 100,
+      "daily_roi": 1.5,
+      "total_roi_earned": 0,
+      "start_date": "2026-01-01T09:53:52.862Z",
+      "end_date": "2026-01-31T09:53:52.862Z",
+      "next_claim_date": "2026-01-02T09:53:52.862Z",
+      "is_active": true,
+      "created_at": "2026-01-01T09:53:52.863Z",
+      "updated_at": "2026-01-01T09:53:52.863Z",
+      "__v": 0
+    }
+  ],
+  "user_referrals": [],
+  "referral_settings": [
+    {
+      "_id": "69562b81bb24dfccd43bcf25",
+      "system_type": "deposit",
+      "level_number": 1,
+      "commission_percentage": 10,
+      "is_active": true,
+      "required_referrals": 0,
+      "required_investment": 0,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:08:33.177Z",
+      "updated_at": "2026-01-01T08:08:33.177Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562b97bb24dfccd43bcf29",
+      "system_type": "deposit",
+      "level_number": 2,
+      "commission_percentage": 8,
+      "is_active": true,
+      "required_referrals": 0,
+      "required_investment": 0,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:08:55.154Z",
+      "updated_at": "2026-01-01T08:08:55.154Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562ba8bb24dfccd43bcf2d",
+      "system_type": "deposit",
+      "level_number": 3,
+      "commission_percentage": 6,
+      "is_active": true,
+      "required_referrals": 0,
+      "required_investment": 0,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:09:12.584Z",
+      "updated_at": "2026-01-01T08:09:12.584Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562bccbb24dfccd43bcf35",
+      "system_type": "investment",
+      "level_number": 2,
+      "commission_percentage": 15,
+      "is_active": true,
+      "required_referrals": 0,
+      "required_investment": 0,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:09:48.922Z",
+      "updated_at": "2026-01-01T08:09:48.922Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562bf5bb24dfccd43bcf42",
+      "system_type": "investment",
+      "level_number": 1,
+      "commission_percentage": 20,
+      "is_active": true,
+      "required_referrals": 0,
+      "required_investment": 0,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:10:29.630Z",
+      "updated_at": "2026-01-01T08:10:29.630Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562c06bb24dfccd43bcf46",
+      "system_type": "investment",
+      "level_number": 3,
+      "commission_percentage": 10,
+      "is_active": true,
+      "required_referrals": 0,
+      "required_investment": 0,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:10:46.960Z",
+      "updated_at": "2026-01-01T08:10:46.960Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562cd3bb24dfccd43bcf73",
+      "system_type": "matching",
+      "level_number": 1,
+      "commission_percentage": 10,
+      "is_active": true,
+      "required_referrals": 10,
+      "required_investment": 550,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:14:11.888Z",
+      "updated_at": "2026-01-01T08:14:11.888Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562cf6bb24dfccd43bcf77",
+      "system_type": "matching",
+      "level_number": 2,
+      "commission_percentage": 5,
+      "is_active": true,
+      "required_referrals": 5,
+      "required_investment": 350,
+      "required_team_volume": 0,
+      "reward_type": "percentage",
+      "reward_amount": 0,
+      "created_at": "2026-01-01T08:14:46.210Z",
+      "updated_at": "2026-01-01T08:14:46.210Z",
+      "__v": 0
+    },
+    {
+      "_id": "69562d53bb24dfccd43bcf98",
+      "system_type": "career",
+      "level_number": 1,
+      "commission_percentage": 0,
+      "is_active": true,
+      "required_referrals": 5,
+      "required_investment": 250,
+      "required_team_volume": 500,
+      "reward_type": "fixed",
+      "reward_amount": 50,
+      "created_at": "2026-01-01T08:16:19.012Z",
+      "updated_at": "2026-01-01T08:16:19.012Z",
+      "__v": 0
+    }
+  ],
+  "coinpayments_settings": []
+}

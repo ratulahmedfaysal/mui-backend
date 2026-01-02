@@ -20,6 +20,23 @@ router.post('/deposits', auth, async (req, res) => {
         });
 
         await deposit.save();
+
+        // Create Transaction Record (Pending)
+        const User = require('../models/User');
+        const user = await User.findById(req.user);
+        const currentBalance = user ? user.balance : 0;
+
+        const Transaction = require('../models/Transaction');
+        await new Transaction({
+            user_id: req.user,
+            type: 'deposit',
+            amount: final_amount, // or amount? Usually user sees the amount they get or pay? final_amount is usually what enters system.
+            balance_before: currentBalance,
+            balance_after: currentBalance, // No change yet
+            description: 'Deposit request',
+            status: 'pending',
+            reference_id: deposit._id
+        }).save();
         res.status(201).json(deposit);
     } catch (err) {
         res.status(400).json({ error: err.message });

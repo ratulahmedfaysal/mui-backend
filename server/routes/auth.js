@@ -52,6 +52,19 @@ router.post('/register', async (req, res) => {
 
         const savedUser = await newUser.save();
 
+        if (referredBy) {
+            const referrer = await User.findOne({ referral_code: referredBy });
+            if (referrer) {
+                const UserReferral = require('../models/UserReferral');
+                await new UserReferral({
+                    referrer_id: referrer._id,
+                    referred_user_id: savedUser._id,
+                    level: 1,
+                    status: 'active'
+                }).save();
+            }
+        }
+
         // Sign Token
         const token = jwt.sign(
             { id: savedUser._id, role: savedUser.role },
