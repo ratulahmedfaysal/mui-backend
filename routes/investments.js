@@ -18,6 +18,21 @@ router.get('/', auth, async (req, res) => {
     }
 });
 
+// Admin: Get All Investments
+router.get('/all', auth, async (req, res) => {
+    try {
+        if (req.role !== 'admin') return res.status(403).json({ error: 'Access denied' });
+
+        const investments = await UserInvestment.find()
+            .populate('user_id', 'email username full_name')
+            .populate('plan_id', 'name duration_days daily_roi_percentage subtitle return_principal')
+            .sort({ start_date: -1 });
+        res.json(investments);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
 // Create Investment
 router.post('/', auth, async (req, res) => {
     try {
