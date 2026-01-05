@@ -31,6 +31,13 @@ const siteSettingsSchema = new mongoose.Schema({
     howItWorks: Array,
     whyChooseUs: Array,
     reviews: Array,
+    banners: [String],
+    notice: String,
+    about: {
+        title: { type: String, default: 'About Us' },
+        description: { type: String, default: '' },
+        image: { type: String, default: '' }
+    },
 
 }, { timestamps: true });
 
