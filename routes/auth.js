@@ -164,7 +164,8 @@ router.get('/me', auth, async (req, res) => {
         role: user.role,
         balance: user.balance,
         referral_code: user.referral_code,
-        two_factor_enabled: user.two_factor_enabled
+        two_factor_enabled: user.two_factor_enabled,
+        is_active: user.is_active
     });
 });
 
