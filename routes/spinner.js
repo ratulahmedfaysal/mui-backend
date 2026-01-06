@@ -2,19 +2,13 @@ const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
 const Transaction = require('../models/Transaction');
-const auth = require('../models/User'); // Checking how auth is middleware usually imported. Usually it's a middleware function.
-// Checking `routes/investments.js` or `routes/auth.js` to see middleware usage.
-// Assuming a middleware exists. I'll check `server/routes/auth.js` or `server/index.js` to confirm middleware path first.
-// Wait, I should double check middleware location.
-// In previous Context, `server/routes/auth.js` was just routes.
-// I'll assume standard middleware or check `server/index.js` quickly.
-// Actually, looking at file list, there is no separate middleware file visible in root of `server`.
-// It might be in `server/middleware/auth.js` if it existed?
-// Let me look at `investments.js` to see how it protects routes.
+const SpinRecord = require('../models/SpinRecord');
+const auth = require('../models/User'); // Legacy import for auth? Need valid auth
+// Using the inline verifyToken for now as per existing file structure 
 
 const jwt = require('jsonwebtoken');
 
-// Middleware to verify token (Inline for now if I can't find it, but better to reuse)
+// Middleware to verify token
 const verifyToken = (req, res, next) => {
     let token = req.header('Authorization');
     if (!token) return res.status(401).json({ error: 'Access denied' });
@@ -70,7 +64,7 @@ router.post('/spin', verifyToken, async (req, res) => {
         user.balance -= SPIN_COST;
         const balanceAfterCost = user.balance;
 
-        // Log Check Cost Transaction
+        // Log Check Cost Transaction (Keeping for ledger integrity)
         await new Transaction({
             user_id: user._id,
             type: 'lucky_spin_cost',
@@ -85,8 +79,7 @@ router.post('/spin', verifyToken, async (req, res) => {
         // Filter winnable prizes
         const winnablePrizes = PRIZES.map((p, index) => ({ ...p, originalIndex: index })).filter(p => p.winnable);
 
-        // Simple random selection from winnable pool
-        // We could weigh this, but for now uniform random among winnable is fine
+        // Simple random selection
         const winningPrize = winnablePrizes[Math.floor(Math.random() * winnablePrizes.length)];
 
         const winAmount = winningPrize.value;
@@ -107,6 +100,15 @@ router.post('/spin', verifyToken, async (req, res) => {
             description: `Won ${winAmount} on Lucky Wheel`
         }).save();
 
+        // --- NEW: Save Consolidated SpinRecord ---
+        await new SpinRecord({
+            user_id: user._id,
+            cost: SPIN_COST,
+            win_amount: winAmount,
+            profit_loss: winAmount - SPIN_COST
+        }).save();
+        // -----------------------------------------
+
         await user.save();
 
         res.json({
@@ -122,19 +124,14 @@ router.post('/spin', verifyToken, async (req, res) => {
     }
 });
 
-// GET /history (For Admin or User)
-router.get('/history', verifyToken, async (req, res) => {
+// GET /records (New Endpoint for Spin History)
+router.get('/records', verifyToken, async (req, res) => {
     try {
-        const { isAdmin } = req.user; // Assuming token has role/id
-        // Actually verifyToken just decodes. Need to check user role if valid.
-        // For brevity, allowing users to see their own, admin to see all if query param?
-        // Let's just return all for admin, own for user.
-
-        // Check if user is admin from DB to be safe
         const requestUser = await User.findById(req.user.id || req.user._id);
 
-        let query = { type: { $in: ['lucky_spin_win', 'lucky_spin_cost'] } };
+        let query = {};
 
+        // If not admin, restrict to own data
         if (requestUser.role !== 'admin') {
             query.user_id = requestUser._id;
         } else if (req.query.userId) {
@@ -142,15 +139,39 @@ router.get('/history', verifyToken, async (req, res) => {
             query.user_id = req.query.userId;
         }
 
-        const transactions = await Transaction.find(query)
+        const records = await SpinRecord.find(query)
             .populate('user_id', 'full_name email')
             .sort({ created_at: -1 })
             .limit(100);
 
-        res.json(transactions);
+        // Calculate Stats
+        // We can do an aggregate for fast stats, but for 100 limit just summing js is fine for display
+        // However, for total stats OF ALL TIME, we should verify specific usage.
+        // User asked for "total cost in spins and total wins".
+        // Let's do a separate aggregation for stats to be accurate across ALL history, not just the limit 100.
+
+        const stats = await SpinRecord.aggregate([
+            { $match: query }, // Apply same filter
+            {
+                $group: {
+                    _id: null,
+                    totalCost: { $sum: '$cost' },
+                    totalWin: { $sum: '$win_amount' },
+                    totalSpins: { $sum: 1 }
+                }
+            }
+        ]);
+
+        const statResult = stats.length > 0 ? stats[0] : { totalCost: 0, totalWin: 0, totalSpins: 0 };
+
+        res.json({
+            records,
+            stats: statResult
+        });
+
     } catch (error) {
-        console.error('History error:', error);
-        res.status(500).json({ error: 'Failed to fetch history' });
+        console.error('Records error:', error);
+        res.status(500).json({ error: 'Failed to fetch spin records' });
     }
 });
 
