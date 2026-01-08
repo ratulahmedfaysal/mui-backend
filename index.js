@@ -44,6 +44,8 @@ app.use('/api/settings', require('./routes/settings'));
 app.use('/api/pairs', require('./routes/pairs'));
 app.use('/api/database', require('./routes/database'));
 app.use('/api/stats', require('./routes/stats'));
+app.use('/api/spinner', require('./routes/spinner'));
+app.use('/api/blogs', require('./routes/blogs'));
 app.use('/api/users', require('./routes/users'));
 app.use('/api/plans', require('./routes/plans'));
 app.use('/api/transactions', require('./routes/transactions'));

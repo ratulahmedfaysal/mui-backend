@@ -93,13 +93,20 @@ router.post('/register', async (req, res) => {
 // Login
 router.post('/login', async (req, res) => {
     try {
-        const { email, password, twoFactorCode } = req.body;
+        const { identifier, password, twoFactorCode } = req.body;
 
         // Validate
-        if (!email || !password)
+        if (!identifier || !password)
             return res.status(400).json({ error: 'Please enter all required fields' });
 
-        const user = await User.findOne({ email });
+        // Find by email or username
+        const user = await User.findOne({
+            $or: [
+                { email: identifier },
+                { username: identifier }
+            ]
+        });
+
         if (!user)
             return res.status(400).json({ error: 'Invalid credentials' });
 

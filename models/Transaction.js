@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 
 const transactionSchema = new mongoose.Schema({
     user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    type: { type: String, enum: ['deposit', 'withdrawal', 'investment', 'roi', 'referral_bonus', 'referral_commission', 'roi_claim', 'interest'], required: true },
+    type: { type: String, enum: ['deposit', 'withdrawal', 'investment', 'roi', 'referral_bonus', 'referral_commission', 'roi_claim', 'interest', 'lucky_spin_cost', 'lucky_spin_win'], required: true },
     amount: { type: Number, required: true },
     currency: { type: String, default: 'USDT' },
     status: { type: String, enum: ['pending', 'completed', 'failed', 'approved', 'rejected'], default: 'pending' },
