@@ -32,7 +32,6 @@ router.put('/:id', auth, async (req, res) => {
             const salt = await bcrypt.genSalt();
             update.password = await bcrypt.hash(password, salt);
         }
-
         const user = await User.findByIdAndUpdate(req.params.id, update, { new: true });
         res.json(user);
     } catch (err) {
